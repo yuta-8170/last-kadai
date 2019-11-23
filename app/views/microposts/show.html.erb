@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-8">
+      
+    <h1>投稿詳細ページ</h1>
+      <h3>名前:<%= @micropost.user.name %></h3>
+      <h3><%= @micropost.content %></h3>
+        <% if @micropost.image? %>
+          <%= image_tag @micropost.image.url %>
+        <% end %>
+        
+  </div>
+  <div class="col-md-4" id="comment">
+        
+    <h2>💬コメント</h2>
+       <% @comments.each do |c| %>
+        <div>
+          <a href="/users/<%= @micropost.user.id %>"><%= c.user.name %></a>
+          <%= c.content %>
+           <!--if current_user == @comment.user -->
+           <!--= link_to "消去", font_path, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' -->
+           <!--end -->
+          <hr>
+        </div>
+      <% end %>
+    
+    <!--= form_with(model: [@micropost, @comment], local: true) do |f| -->
+    <%= form_for [@micropost, @comment] do |f| %>
+      <%= f.text_field :content %>
+      <br>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+    
+    <div><a href="/">戻る</a></div>
+      
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<hr>
+<% if logged_in? %>
+
+  <div class="row">
+    <aside class="col-sm-4">
+      
+<%= form_with(model: @micropost, local: true) do |f| %>
+
+        <div class="form-group">
+          
+<%= f.text_area :content, class: 'form-control', rows: 5 %>
+
+        </div>
+        
+<%= f.label "添付画像" %><br><%= f.file_field :image %>
+        
+<%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+
+      
+<% end %>
+
+    </aside>
+    <div class="col-sm-8">
+      
+<%= render 'microposts/microposts', microposts: @microposts %>
+
+    </div>
+  </div>
+
+<% else %>
+  <!--<div class="center jumbotron">-->
+    <p><%= image_tag 'online-4091231_1280.jpg'%></p>
+    <div class="text-center">
+      <h1>勉強仲間を見つけよう！</h1>
+      
+      <%= link_to '今すぐ登録！', signup_path, class: 'btn btn-lg btn-primary' %>
+      
+    </div>
+  <!--</div>-->
+<% end %>

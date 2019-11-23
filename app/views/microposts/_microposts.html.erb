@@ -1,0 +1,32 @@
+<ul class="list-unstyled">
+<% microposts.each do |micropost| %>
+
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="
+<%= gravatar_url(micropost.user, { size: 50 }) %>
+" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to micropost.user.name, user_path(micropost.user) %>
+            <span class="text-muted"><%= micropost.created_at %><a href="/microposts/<%= micropost.id %>">💬コメント</a></span>
+        </div>
+        <div>
+          <p><%= micropost.content %></p>
+        </div>
+      </div>
+      <% if current_user == micropost.user %>
+       <%= link_to "消去", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+      <% if current_user != micropost.user %>
+        <%= render 'favorites/like_button', micropost: micropost %>
+      <% end %>
+    </li>
+      <% if micropost.image? %>
+        <%= image_tag micropost.image.url %>
+      <% end %>
+  
+<% end %>
+
+<%= paginate microposts %>
+
+</ul>

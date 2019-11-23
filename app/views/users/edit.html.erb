@@ -1,0 +1,91 @@
+<div class="text-center">
+  <h1>ユーザー設定</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    
+<%= form_with(model: @user, local: true) do |f| %>
+
+<%= render 'layouts/error_messages', model: f.object %>
+
+      
+      <div class="form-group">
+        
+<%= f.label :name, '名前' %>
+
+        
+<%= f.text_field :name, class: 'form-control' %>
+
+      </div>
+
+      <div class="form-group">
+        
+<%= f.label :email, 'メールアドレス' %>
+
+        
+<%= f.email_field :email, class: 'form-control' %>
+
+      </div>
+
+      <div class="form-group">
+        
+<%= f.label :password, 'パスワード' %>
+
+        
+<%= f.password_field :password, class: 'form-control' %>
+
+      </div>
+
+      <div class="form-group">
+        
+<%= f.label :password_confirmation, 'パスワード確認' %>
+
+        
+<%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      </div>
+      
+      <div class="form-group">
+        
+<%= f.label :job, '職業' %>
+
+        
+<%= f.text_field :job, class: 'form-control' %>
+
+      </div>
+      
+      <div class="form-group">
+        
+<%= f.label :aera, '地域' %>
+
+        
+<%= f.text_field :area, class: 'form-control' %>
+
+      </div>
+      
+      <div class="form-group">
+        
+<%= f.label :age, '年齢' %>
+
+        
+<%= f.text_field :age, class: 'form-control' %>
+
+      </div>
+      
+      <div class="form-group">
+        
+<%= f.label :content, '勉強内容' %>
+
+<%= f.select :content, [["TOEIC", "TOEIC"], ["簿記検定", "簿記検定"],  ["プログラミング", "プログラミング"]],  :prompt => "選択してください" %>
+
+      </div>
+      
+<%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+
+    
+<% end %>
+
+  </div>
+</div>
