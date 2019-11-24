@@ -1,27 +1,32 @@
 <% if logged_in? %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
-  <a class="navbar-brand" href="#"><i class="fas fa-user-graduate"></i>Study friends</a>
+  <a class="navbar-brand" href="/"><i class="fas fa-user-graduate"></i>Study friends</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to '探す', users_path, class: 'nav-link' %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users"><i class="fas fa-search"></i>探す</a>
+        <!--= link_to '探す', users_path, class: 'nav-link' -->
         <!--<a class="nav-link" href="#">探す<span class="sr-only">(current)</span></a>-->
       </li>
       <li class="nav-item">
-        <%= link_to 'みんなの情報', root_url, class: 'nav-link' %>
+        <a class="nav-link" href="/"><i class="fas fa-globe-americas"></i>投稿</a>
+        <!--= link_to '投稿', root_url, class: 'nav-link' -->
       </li>
       <li class: 'nav-item'>
-        <p class="nav link"><%= link_to '通知', notifications_path, class: 'nav-link'%>
+        <p class="nav link"><a class="nav-link" href="/notifications"><i class="fa fa-bell"></i>通知</a>
+          <!--= link_to '通知', notifications_path, class: 'nav-link'-->
         <% if unchecked_notifications.any? %>
-        <i class="fa fa-bell"></i>
+        <!--<i class="fa fa-bell"></i>-->
+        <i class="fa fa-circle"></i>
         <% end %></p>
       </li>
       <li class="nav-item">
-        <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
+      <a class="nav-link" href="/users/<%= current_user.id %>"><i class="fas fa-user-circle"></i>マイページ</a>
+        <!--= link_to 'マイページ', user_path(current_user), class: 'nav-link' -->
       </li>
       <li class="nav-item">
         <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-lg btn-danger btn-block' %>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :matchings, :edit, :update]
   def index
     # @users = User.order(id: :desc).page(params[:page]).per(25)
-     @user = User.all.page(params[:page]).search(params[:search])
+     @user = User.where.not(id: current_user.id).page(params[:page]).search(params[:search])
   end
   
   def edit
