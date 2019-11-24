@@ -2,7 +2,8 @@
 <%= form_tag(users_path, :method => 'get' ) do %>
 <!--= text_field_tag :search, '', placeholder: "勉強内容" -->
 <%= select_tag :search, options_for_select([["TOEIC","TOEIC"], ["簿記検定","簿記検定"], ["プログラミング","プログラミング"],["勉強内容","勉強内容"]],:selected=>"勉強内容") %>
-  <%= submit_tag 'Search', :content => nil %>
+<input type="submit" name="commit" value="Search" data-disable-with="Search" class='btn-info'>
+  <!--= submit_tag 'Search', :content => nil, class='btn-info' -->
 <% end %>
 
 <hr color="black" width="100%" size="6">

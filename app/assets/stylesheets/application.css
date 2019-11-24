@@ -34,3 +34,11 @@
 .container{
     background-color: #EEEEEE;
 }
+
+/*.alert{*/
+/*    margin-top: 10px;*/
+/*}*/
+
+.container{
+    padding-top: 10px;
+}
